@@ -11,7 +11,7 @@
             <input type="text" name="ville" placeholder="Ville">
             <input type="text" name="haut" placeholder="Haut">
             <input type="text" name="bas" placeholder="Bas">
-            <input type="submit" value="submit" >
+            <input type="submit" value="submit" > 
     </form>
 
     <?php
@@ -25,6 +25,11 @@
                 die('Erreur : ' . $e->getMessage());
             }
         
+        $ville = $_POST['ville'];
+        $ville = $_POST['haut'];
+        $ville = $_POST['bas'];
+        
+
         $resultat = 'SELECT * FROM météo';
         $dbstatement = $db->prepare($resultat);
         $dbstatement->execute();

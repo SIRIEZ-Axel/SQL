@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet">
     <title>php - pdo</title>
 </head>
 <body>
+    <header>
+        
+        <h1>Meteo formulaire</h1>
+    </header>
     <form action="read.php" method="post" enctype="multipart/form">
-            <input type="text" name="ville" placeholder="Ville">
+            <input class="input-text" type="text" name="ville" placeholder="Ville">
             <br>
-            <input type="text" name="haut" placeholder="Haut">
+            <input class="input-text" type="text" name="haut" placeholder="Haut">
             <br>
-            <input type="text" name="bas" placeholder="Bas">
+            <input class="input-text" type="text" name="bas" placeholder="Bas">
             <br>
-            <input type="submit" value="Submit" > 
+            <input class="input-sub" type="submit" value="Submit" > 
     </form>
 
-    <?php
+<?php
     // **********************************************************
     // CONNEXION A LA DB
     // **********************************************************
@@ -53,27 +58,18 @@
     $dbstatement2 = $db->prepare($resultat);
     $dbstatement2->execute();
     $donnees = $dbstatement2->fetchAll();
-    
-    foreach ($donnees as $donnee){
-        echo '<pre>';
-        print_r($donnee['ville']); ?> <input type="checkbox" name="delete" value="delete"><?php
-        print_r($donnee['haut']); 
-        print_r($donnee['bas']); 
-        echo '</pre>';
-    }
-
-
     ?>
-    <input type="submit" value="del" name="del">
+        <table>
     <?php
-    // **********************************************************
-    // DELETE LES DONNEES VIA LA CHECKBOX
-    // **********************************************************
-    if (isset($_GET['del'])) {
-        $id = $_GET['del'];
-        mysqli_query($db, "DELETE FROM members WHERE id=$id");
-        $_SESSION['message'] = "Location deleted!";
+    foreach ($donnees as $donnee){
+        ?>
+        <tr><td> <input type="checkbox" name="checkbox"> <?php echo $donnee['ville'] ; ?> </td>
+        <td> <?php echo $donnee['haut'] ; ?> </td> 
+        <td> <?php echo $donnee['bas']; ?> </td></tr> <?php
     }
     ?>
+        </table>
+        <input class="input-del" type="button" name="del" value="Delete">
+
 </body>
 </html>

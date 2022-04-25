@@ -8,7 +8,21 @@
 <body>
 	<a href="./read.php">Liste des données</a>
 	<h1>Ajouter</h1>
-	<form action="" method="post">
+	<?php
+	/************************************************************************************/
+	/** CONNEXION A LA DB */
+	/************************************************************************************/
+	try {
+		$db = new PDO(
+			'mysql:host=localhost;dbname=becode;charset=utf8',
+			'root',
+			''
+			);
+		} catch (Exception $e) {
+			die('Erreur : ' . $e->getMessage());
+		}  
+	?>
+	<form action="create.php" method="post">
 		<div>
 			<label for="name">Name</label>
 			<input type="text" name="name" value="">
@@ -39,5 +53,23 @@
 		</div>
 		<button type="submit" name="button">Envoyer</button>
 	</form>
+	<?php
+	/*************************************************************************/
+	/* CREATION D UNE DONNE DANS LA DB */
+	/*************************************************************************/
+	$name = $_POST['name'];
+	$difficulty = $_POST['difficulty'];
+	$distance = $_POST['distance'];
+	$duration = $_POST['duration'];
+	$height = $_POST['height_difference'];
+
+    $sql = "INSERT INTO hiking (name, difficulty, distance, duration, height_difference) VALUES ('$name', '$difficulty', '$distance', '$duration', '$height')";
+
+    $dbstatement = $db->prepare($sql);
+    $dbstatement->execute();
+
+    $dbstatement->closeCursor();
+    header('Location:read.php');
+	?>
 </body>
 </html>

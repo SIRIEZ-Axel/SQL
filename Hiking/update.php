@@ -8,31 +8,7 @@
 <body>
 	<a href="read.php">Liste des données</a>
 	<h1>Ajouter</h1>
-	<?php
-		try {
-			$db = new PDO(
-				'mysql:host=localhost;dbname=becode;charset=utf8',
-				'root',
-				''
-			);
-		} catch (Exception $e) {
-			die('Erreur : ' . $e->getMessage());
-		}
-
-	$name = $_POST['name'];
-	$difficulty = $_POST['difficulty'];
-	$distance = $_POST['distance'];
-	$duration = $_POST['duration'];
-	$height_difference = $_POST['height_difference'];
-
-    $sql = "SELECT * FROM hiking";
-    $dbstatement = $db->prepare($sql);
-    $dbstatement->execute();
-
-    $dbstatement->closeCursor();
-    header('refresh:./read.php');
-	?>
-	<form action="read.php" method="post">
+	<form action="update.php" method="post">
 		<div>
 			<label for="name">Name</label>
 			<input type="text" name="name" value=<?php $name ?>>
@@ -55,7 +31,7 @@
 		</div>
 		<div>
 			<label for="duration">Durée</label>
-			<input type="duration" name="duration" value="">
+			<input type="time" name="duration" value="">
 		</div>
 		<div>
 			<label for="height_difference">Dénivelé</label>
@@ -63,6 +39,30 @@
 		</div>
 		<button type="submit" name="button">Envoyer</button>
 	</form>
+	<?php
+		try {
+			$db = new PDO(
+				'mysql:host=localhost;dbname=becode;charset=utf8',
+				'root',
+				''
+			);
+		} catch (Exception $e) {
+			die('Erreur : ' . $e->getMessage());
+		}
 
+	$name = $_POST['name'];
+	$difficulty = $_POST['difficulty'];
+	$distance = $_POST['distance'];
+	$duration = $_POST['duration'];
+	$height = $_POST['height_difference'];
+
+    $sql = "UPDATE hiking SET (name = $name, difficulty = $difficulty, distance = $distance, duration = $duration, height_difference = $height)";
+	
+    $dbstatement = $db->prepare($sql);
+    $dbstatement->execute();
+
+    $dbstatement->closeCursor();
+    header('Location:read.php');
+	?>
 </body>
 </html>

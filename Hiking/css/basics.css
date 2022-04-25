@@ -17,7 +17,7 @@ body a {
 }
 
 body header {
-  background-color: #141414;
+  background-color: #292929;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -42,11 +42,11 @@ body .btn-container .btn-red {
 }
 
 body .btn-container .btn-blue {
-  background-color: #2b2bfa;
+  background-color: #6565ff;
 }
 
 body .btn-container .btn-green {
-  background-color: #31ff31;
+  background-color: #5bff5b;
 }
 
 body .btn-container a {
@@ -54,13 +54,13 @@ body .btn-container a {
   padding: 10px 25px;
   text-decoration: none;
   border-radius: 5px;
-  -webkit-transition: ease-in-out 0.4s;
-  transition: ease-in-out 0.4s;
+  -webkit-transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.2s;
 }
 
 body .btn-container a:hover {
-  -webkit-transform: scale(1.5);
-          transform: scale(1.5);
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 body table {

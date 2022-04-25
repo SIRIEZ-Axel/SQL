@@ -1,9 +1,10 @@
+$darkcolor: rgb(50, 50, 50);
+
 *{
     body{
         font-family: 'Roboto', sans-serif;
         margin: 0 auto;
-        color: rgba($color: #000000, $alpha: 0.7);
-
+        color: $darkcolor;
         header{
             display: flex;
             align-items: center ;
@@ -11,27 +12,48 @@
             gap: 20px;
 
             background-color: rgba($color: #58aab2, $alpha: 0.5);
-            margin-bottom: 50px;
+            
             height: 70px;
             width: 100%;
 
         }
-        form{
-            
+        .form-container{
+            background-color: rgba($color: #278a93, $alpha: 0.5);
             display: flex;
+            align-items: center;
             justify-content: center;
+            height: 150px;
             margin-bottom: 50px;
-            gap: 10px;
+            form{
+                display: flex;
+                gap: 10px;   
+                .input-text{
+                    color: #278a93;
+                    padding: 13px 20px;
+                    font-size: larger;
+                    border-style: none;
+                    border-radius: 5px;
+                    transition: ease-in-out 0.2s;
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+                }
+                .input-sub{
+                    color: $darkcolor;
+                    background-color: white;
+        
+                    border:2px solid rgba($color: rgb(50, 50, 50), $alpha: 0.7);
+                    border-radius: 5px;
+                    padding: 10px 20px;
+                    font-size: larger;
+                    opacity: 1;
+                    transition: ease-in-out 0.2s;
+                    &:hover{
+                        opacity: 0.7;
+                        transform: scale(1.1);
 
-
-            .input-text{
-                padding: 13px 20px;
-                font-size: larger;
-            }
-            .input-sub{
-                padding: 10px 20px;
-                font-size: larger;
-
+                    }
+                }
             }
         }
         pre{
@@ -39,42 +61,52 @@
             gap: 5px;
             line-height: 25px;
         }
-        table{
+        .tb-container{
             display: flex;
             justify-content: center;
+            table{
+                max-width: fit-content;
 
-            border-collapse: collapse;
-            text-align: center;
-            tr{
-                border-bottom: 1px solid rgb(122, 122, 122);
-                th{    
-                border-bottom: 3px solid rgb(122, 122, 122);
-                padding: 20px 50px;
-                }
-                td{
-                    padding: 25px 50px;
+                text-align: center;
+                border-collapse: collapse;
+                tr{
+                    background-color: rgba($color: #58aab2, $alpha: 0.2);
 
+                    border-bottom: 1px solid rgb(122, 122, 122);
+                    border-color: white;
+                    
+                    th{    
+                    border-bottom: 3px solid rgb(122, 122, 122);
+                    padding: 20px 50px;
+                    border-color: white;
+
+                    }
+                    td{
+                        padding: 40px 50px;
+    
+                    }
                 }
             }
         }
-        .btn-del{
+        .del-container{
             display: flex;
             justify-content: center;
             .input-del{
                 padding: 10px 25px;
-                margin-top: 25px;
+                margin-top: 50px;
                 margin-bottom: 25px;
                 
-                background-color: rgba($color: #df3e3e, $alpha: 1);
-                border: solid 1px rgb(79, 79, 79);
+                background-color: #df3e3e;
                 font-size: larger;
-
+                
                 color: white;
                 border-radius: 5px;
-                opacity: 0.6;
-                transition: opacity 0.6s ease 0s;
+                border-style: none;
+                opacity: 1;
+                transition: ease-in-out 0.2s;
                 &:hover{
-                    opacity: 1;                
+                    opacity: 0.7;   
+                    transform: scale(1.1);
                 }
             }
         }

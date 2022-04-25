@@ -6,23 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="style.css" rel="stylesheet">
     <link href="sun.svg" alt="sun" rel="icon">
-    <title>php - pdo</title>
+    <title>Météo</title>
 </head>
 <body>
     <header>
         <img src="sun.svg" alt="sun" width=40>
         <h1>Formulaire Météo</h1>
     </header>
-    <form action="read.php" method="post" enctype="multipart/form">
+    <div class="form-container">
+        <form action="read.php" method="post" enctype="multipart/form">
             <input class="input-text" type="text" name="ville" placeholder="Ville">
             <br>
             <input class="input-text" type="text" name="haut" placeholder="Haut">
             <br>
             <input class="input-text" type="text" name="bas" placeholder="Bas">
             <br>
-            <input class="input-sub" type="submit" value="Submit" > 
-    </form>
-
+            <input class="input-sub" type="submit" value="Soumettre ces données" > 
+        </form>
+    </div>
+        
 <?php
     // **********************************************************************************************
     // CONNEXION A LA DB
@@ -52,6 +54,11 @@
 
     $dbstatement->closeCursor();
     header('refresh:./read.php');
+    
+    // ************************************************************************************************
+    // DELETE DATA
+    // ************************************************************************************************
+    
 
     // **********************************************************************************************
     // AFFICHAGE DES DONNEES
@@ -64,6 +71,7 @@
     $dbstatement2->execute();
     $donnees = $dbstatement2->fetchAll();
     ?>
+    <div class="tb-container">
         <table>
             <tr>
                 <th></th>
@@ -71,19 +79,20 @@
                 <th>Température maximum</th>
                 <th>Température minimum</th>
             </tr>
-    <?php
+            <?php
     foreach ($donnees as $donnee){
         ?>
         <tr><td> <input type="checkbox" name="checkbox"> </td>
         <td><?php echo $donnee['ville'] ; ?> </td>
-        <td> <?php echo $donnee['haut'] ; ?> </td> 
-        <td> <?php echo $donnee['bas']; ?> </td></tr> <?php
+        <td> <?php echo $donnee['haut'] ; ?>°C</td> 
+        <td> <?php echo $donnee['bas']; ?>°C</td></tr> <?php
     }
     ?>
         </table>
-        <form action="del.php" method="post">
-        <span class="btn-del">
-                <input class="input-del" type="button" name="del" value="Delete">
+    </div>
+        <form action="read.php" method="post">
+            <span class="del-container">
+                <input class="input-del" type="submit" name="del" value="Delete">
             </span>
         </form>
 

@@ -1,5 +1,88 @@
-label, select, input{
+label, select, input {
   width: 150px;
   display: inline-block;
   margin: 5px 0;
 }
+
+body {
+  background-color: #222;
+  color: white;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+}
+
+body a {
+  text-decoration: none;
+  color: white;
+}
+
+body header {
+  background-color: #141414;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 50px;
+}
+
+body .btn-container {
+  margin-top: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+body .btn-container .btn-red {
+  background-color: #fe3535;
+}
+
+body .btn-container .btn-blue {
+  background-color: #2b2bfa;
+}
+
+body .btn-container .btn-green {
+  background-color: #31ff31;
+}
+
+body .btn-container a {
+  color: white;
+  padding: 10px 25px;
+  text-decoration: none;
+  border-radius: 5px;
+  -webkit-transition: ease-in-out 0.4s;
+  transition: ease-in-out 0.4s;
+}
+
+body .btn-container a:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+body table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-collapse: collapse;
+  font-size: larger;
+}
+
+body table tr th {
+  border-bottom: 2px solid #222;
+  border-color: white;
+  padding-bottom: 25px;
+}
+
+body table tr td {
+  border-bottom: #222 1px solid;
+  padding: 25px 50px;
+  border-color: white;
+}
+/*# sourceMappingURL=basics.css.map */
